@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/erik/Documents/programming/projects/markov/NAME'
+let g:netrw_dirhist_2='/Users/erik/.prefs'
+let g:netrw_dirhist_3='/Users/erik/.vim'
+let g:netrw_dirhist_4='/Users/erik/Documents/programming/tempVimPractice'
+let g:netrw_dirhist_5='/Users/erik/Documents/programming'
+let g:netrw_dirhist_6='/Users/erik/Documents'
+let g:netrw_dirhist_7='/Users/erik'
+let g:netrw_dirhist_8='/Users/erik/.jssc'
