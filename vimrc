@@ -1,6 +1,9 @@
 
+execute pathogen#infect()
 
-"colorscheme solarized
+syntax enable
+set background=dark
+colorscheme solarized
 
 "To enable saving with Ctrl-s
 nmap <C-s> :w<CR>
@@ -36,6 +39,9 @@ set incsearch
 
 "Next line starts with same indentation
 set autoindent
+
+"Set tab-width
+set tabstop=4
 
 "Error bells are displayed visually
 set visualbell
