@@ -20,8 +20,8 @@ nmap <C-l> gt
 imap <C-l> <Esc>gt
 
 "Commands for moving to end/beginning of line optimized for swe-keyboard
-nmap ä $
-nmap ö ^
+nmap - $
+nmap , ^
 
 "Map folds to automatically be set to indentation
 set foldmethod=indent

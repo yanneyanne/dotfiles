@@ -9,14 +9,15 @@ ZSH_THEME="agnoster"
 bindkey -v
 
 # Rebinds vi-mode to ^C and interrupt to ^P
-bindkey '^c' vi-cmd-mode
+bindkey "^c" vi-cmd-mode
 stty intr ^P
 
 # History search
-bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M vicmd "/" history-incremental-search-backward
 
-#bindkey 'ä' vi-end-of-line
-
+unbind "-"
+bindkey "," end-of-line
+bindkey "-" beginning-of-line
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
@@ -87,3 +88,4 @@ export LANG=en_US.UTF-8
 
 # Uncomment this line to hide the default user in the prompt
 DEFAULT_USER=`whoami`
+
