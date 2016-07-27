@@ -57,11 +57,23 @@ set nocompatible
 set hidden
 set showtabline=0
 
+"Status-line
+"set statusline=%t       "tail of the filename"
+"set statusline+=%m      "modified flag"
+"set statusline+=%c,     "cursor column
+"set statusline+=%l/%L   "cursor line/total lines
+
+"Vim-airline
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+	        \ }
+
 "Recommended settings for syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
