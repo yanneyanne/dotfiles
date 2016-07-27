@@ -15,9 +15,10 @@ stty intr ^P
 # History search
 bindkey -M vicmd "/" history-incremental-search-backward
 
-unbind "-"
-bindkey "," end-of-line
-bindkey "-" beginning-of-line
+#  unbind "-"
+# bindkey "," end-of-line
+# bindkey "-" beginning-of-line
+
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
@@ -81,11 +82,8 @@ export LANG=en_US.UTF-8
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias tree='tree -N'
 # Uncomment this line to hide the default user in the prompt
 DEFAULT_USER=`whoami`
 

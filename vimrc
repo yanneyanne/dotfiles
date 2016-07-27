@@ -22,6 +22,8 @@ imap <C-l> <Esc>gt
 "Commands for moving to end/beginning of line optimized for swe-keyboard
 nmap - $
 nmap , ^
+nmap d- d$
+nmap d, d^
 
 "Map folds to automatically be set to indentation
 set foldmethod=indent
@@ -49,3 +51,17 @@ set visualbell
 
 "Show active mode
 set showmode
+
+"The following lines are needed for CtrlSpace-compatibility
+set nocompatible
+set hidden
+set showtabline=0
+
+"Recommended settings for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
