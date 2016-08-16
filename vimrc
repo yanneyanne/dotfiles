@@ -28,8 +28,14 @@ nmap d, d^
 "Map folds to automatically be set to indentation
 set foldmethod=indent
 
+"Shows all folds which are indented less then the specified number
+set foldlevelstart=10
+
+"Set maximum number of nested folds
+set foldnestmax=5
+
 "To remap closing and opening folds to space
-:nnoremap <space> za
+nnoremap <space> za
 
 "Show line numbers
 set number
@@ -56,12 +62,6 @@ set showmode
 set nocompatible
 set hidden
 set showtabline=0
-
-"Status-line
-"set statusline=%t       "tail of the filename"
-"set statusline+=%m      "modified flag"
-"set statusline+=%c,     "cursor column
-"set statusline+=%l/%L   "cursor line/total lines
 
 "Vim-airline
 set laststatus=2
