@@ -37,6 +37,11 @@ set foldnestmax=5
 "To remap closing and opening folds to space
 nnoremap <space> za
 
+"To make copy-pasting (and toggling the paste-mode) easier
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 "Show line numbers
 set number
 
