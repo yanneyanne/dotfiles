@@ -1,11 +1,3 @@
-
-execute pathogen#infect()
-
-syntax enable
-set term=screen-256color
-set background=dark
-colorscheme solarized
-
 "To enable saving with Ctrl-s
 nmap <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>a
@@ -63,22 +55,49 @@ set visualbell
 "Show active mode
 set showmode
 
-"The following lines are needed for CtrlSpace-compatibility
-set nocompatible
-set hidden
-set showtabline=0
+" Plugins
+call plug#begin('$HOME/.config/nvim/plugged')
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mhartington/oceanic-next'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'itchyny/lightline.vim'
+Plug 'w0rp/ale'
+call plug#end()
 
 "Vim-airline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
-	        \ }
+    \ 'colorscheme': 'oceanicnext',
+\}
 
-"Recommended settings for syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" Or if you have Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+syntax enable
+"colorscheme solarized
+colorscheme OceanicNext
+
+" omnifuncs (deoplete)
+augroup omnifuncs
+    autocmd!
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+"let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"

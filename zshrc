@@ -87,3 +87,6 @@ alias tree='tree -N'
 # Uncomment this line to hide the default user in the prompt
 DEFAULT_USER=`whoami`
 
+if type nvim > /dev/null 2>&1; then
+    alias vim='nvim'
+fi
