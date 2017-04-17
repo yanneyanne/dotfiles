@@ -17,10 +17,10 @@ nmap , ^
 nmap d- d$
 nmap d, d^
 
-"Map folds to automatically be set to indentation
+" Map folds to automatically be set to indentation
 set foldmethod=indent
 
-"Shows all folds which are indented less then the specified number
+" Shows all folds which are indented less then the specified number
 set foldlevelstart=10
 
 " Set maximum number of nested folds
@@ -68,11 +68,13 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/oceanic-next'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-sleuth'
+Plug 'Raimondi/delimitMate'
 Plug 'w0rp/ale'
 Plug 'artur-shaik/vim-javacomplete2'
+Plug 'othree/yajs.vim'
 call plug#end()
 
-" Vim-airline
+" Vim-lightline
 set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'oceanicnext',
