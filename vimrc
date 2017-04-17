@@ -46,7 +46,6 @@ set incsearch
 "Next line starts with same indentation
 set autoindent
 
-"Set tab-width
 set tabstop=4
 
 "Error bells are displayed visually
@@ -59,8 +58,8 @@ set showmode
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/oceanic-next'
-Plug 'artur-shaik/vim-javacomplete2'
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-sleuth'
 Plug 'w0rp/ale'
 Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
@@ -79,7 +78,8 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-syntax enable 
+set background=dark
+syntax enable
 colorscheme OceanicNext
 
 " omnifuncs (deoplete)
