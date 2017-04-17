@@ -3,7 +3,7 @@
 # this install script creates symlinks from the home directory to the dotfiles in ~/dotfiles
 ##########################
 
-dir=~/.dotfiles
+dir=~/dotfiles
 olddir=~/dotfiles_backup		#old dotfiles backup 
 files="vimrc vim zshrc tmux.conf tmux.reset.conf"
 
