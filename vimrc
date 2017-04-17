@@ -62,6 +62,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
+Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
 
 "Vim-airline
@@ -78,13 +79,13 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-syntax enable
-"colorscheme solarized
+syntax enable 
 colorscheme OceanicNext
 
 " omnifuncs (deoplete)
 augroup omnifuncs
     autocmd!
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
