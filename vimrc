@@ -1,17 +1,17 @@
-"To enable saving with Ctrl-s
+" To enable saving with Ctrl-s
 nmap <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>a
 
-"Shortcuts for moving between tabs
-"Ctrl-h to moveleft
+" Shortcuts for moving between tabs
+" Ctrl-h to moveleft
 nmap <C-h> gT
 imap <C-h> <Esc>gT
 
-"Ctrl-l to move right
+" Ctrl-l to move right
 nmap <C-l> gt
 imap <C-l> <Esc>gt
 
-"Commands for moving to end/beginning of line optimized for swe-keyboard
+" Commands for moving to end/beginning of line optimized for swe-keyboard
 nmap - $
 nmap , ^
 nmap d- d$
@@ -23,35 +23,43 @@ set foldmethod=indent
 "Shows all folds which are indented less then the specified number
 set foldlevelstart=10
 
-"Set maximum number of nested folds
+" Set maximum number of nested folds
 set foldnestmax=5
 
-"To remap closing and opening folds to space
+" To remap closing and opening folds to space
 nnoremap <space> za
 
-"To make copy-pasting (and toggling the paste-mode) easier
+" To make copy-pasting (and toggling the paste-mode) easier
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-"Show line numbers
+" Show line numbers
 set number
 
-"To activate smartcase-searching
+" To activate smartcase-searching
 set smartcase
 
-"Vim starts searching during search keyword typing
+" Vim starts searching during search keyword typing
 set incsearch
 
-"Next line starts with same indentation
+" Next line starts with same indentation
 set autoindent
 
+" Set the tab width
 set tabstop=4
 
-"Error bells are displayed visually
+" Highlight the current line
+set cursorline
+" Set cursorline colors
+highlight CursorLine ctermbg=235
+" Set color of number column on cursorline
+highlight CursorLineNR ctermbg=235 ctermfg=white
+
+" Error bells are displayed visually
 set visualbell
 
-"Show active mode
+" Show active mode
 set showmode
 
 " Plugins
@@ -64,7 +72,7 @@ Plug 'w0rp/ale'
 Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
 
-"Vim-airline
+" Vim-airline
 set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'oceanicnext',
@@ -97,7 +105,7 @@ let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
-"let g:deoplete#disable_auto_complete = 1
+" let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " deoplete tab-complete
