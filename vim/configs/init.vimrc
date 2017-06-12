@@ -7,6 +7,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'Raimondi/delimitMate'
 Plug 'w0rp/ale'
 Plug 'artur-shaik/vim-javacomplete2'
-Plug 'othree/yajs.vim'
+Plug 'sheerun/vim-polyglot/'
 call plug#end()
 
