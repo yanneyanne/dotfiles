@@ -91,3 +91,8 @@ DEFAULT_USER=`whoami`
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
+
+# Set infinite shell history
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
