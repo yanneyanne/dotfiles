@@ -10,7 +10,7 @@ bindkey -v
 
 # Rebinds vi-mode to ^C and interrupt to ^P
 bindkey "^c" vi-cmd-mode
-stty intr ^P
+stty intr "^P"
 
 # History search
 bindkey -M vicmd "/" history-incremental-search-backward
