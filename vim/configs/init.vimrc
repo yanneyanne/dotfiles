@@ -1,4 +1,4 @@
-" Plugins
+" Load plugins
 call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mhartington/oceanic-next'
