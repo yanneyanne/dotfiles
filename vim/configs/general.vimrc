@@ -37,3 +37,8 @@ set visualbell
 
 " Show active mode
 set showmode
+
+" Equate the system clipboard and vim clipboard. Note that explicitly
+" copying to a register other than the default vim register " bypasses
+" the system clipboard.
+set clipboard=unnamedplus
