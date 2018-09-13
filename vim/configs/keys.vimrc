@@ -22,3 +22,14 @@ nnoremap <space> za
 
 " To make copy-pasting (and toggling the paste-mode) easier
 nnoremap <F2> :set invpaste paste?<CR>
+
+" Delete with 'd' and 'dd' without yanking
+" Note that copy registers can still manually be specified
+nnoremap d "_d
+nnoremap dd "_dd
+vnoremap d "_d
+vnoremap dd "_dd
+
+" Replace currently selected text with default register
+" without yanking it
+vnoremap p "_dP
