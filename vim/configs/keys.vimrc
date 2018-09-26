@@ -11,11 +11,16 @@ imap <C-h> <Esc>gT
 nmap <C-l> gt
 imap <C-l> <Esc>gt
 
-" Commands for moving to end/beginning of line optimized for swe-keyboard
+" Commands for moving and deleting to end/beginning of line optimized for swe-keyboard
 nmap - $
 nmap , ^
 nmap d- d$
 nmap d, d^
+" The same end/beginning of line changes as above, but in visual mode
+vmap - $
+vmap , ^
+vmap d- d$
+vmap d, d^
 
 " To remap closing and opening folds to space
 nnoremap <space> za
@@ -31,5 +36,5 @@ vnoremap d "_d
 vnoremap dd "_dd
 
 " Replace currently selected text with default register
-" without yanking it
+" without yanking it. In other words, 'paste-in-place'
 vnoremap p "_dP
