@@ -31,5 +31,7 @@ endif
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" deoplete tab-complete
+" deoplete - use tab to cycle between autocompletion alternatives
+" and shift-tab to cycle in reversed order
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
