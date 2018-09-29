@@ -20,6 +20,9 @@ bindkey -M vicmd "/" history-incremental-search-backward
 bindkey -M vicmd "," beginning-of-line
 bindkey -M vicmd "\-" end-of-line
 
+# Allow reversed autocompletion cycling with shift-tab
+bindkey '^[[Z' reverse-menu-complete
+
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
