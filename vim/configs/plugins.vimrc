@@ -1,17 +1,48 @@
-" Or if you have Neovim >= 0.1.5
+" Set color settings to accomodate Oceanic-Next
 if (has("termguicolors"))
  set termguicolors
 endif
-
 set background=dark
 syntax enable
 colorscheme OceanicNext
 
-" Vim-lightline
+" Have statusline always be visible
 set laststatus=2
+
+
+" Make Lightline use Oceanic-Next
 let g:lightline = {
     \ 'colorscheme': 'oceanicnext',
 \}
+
+" Register ALE-linting related components
+let g:lightline.component_expand = {
+    \  'linter_checking': 'lightline#ale#checking',
+    \  'linter_warnings': 'lightline#ale#warnings',
+    \  'linter_errors': 'lightline#ale#errors',
+    \  'linter_ok': 'lightline#ale#ok',
+    \ }
+
+" Colorize ALE for Lightline components
+let g:lightline.component_type = {
+    \     'linter_checking': 'left',
+    \     'linter_warnings': 'warning',
+    \     'linter_errors': 'error',
+    \     'linter_ok': 'left',
+    \ }
+
+" Add components to Lightline
+let g:lightline.active = {
+    \ 'left': [['readonly', 'filename', 'modified']],
+    \ 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'lineinfo', 'percent']]
+    \ }
+
+" Set lightline ALE components to use icons
+" The spaces ensure that icons line up
+let g:lightline#ale#indicator_checking = " \u25F7 "
+let g:lightline#ale#indicator_warnings = "\u26A0 "
+let g:lightline#ale#indicator_errors = "\u2715 "
+let g:lightline#ale#indicator_ok = " \u2714 "
 
 " omnifuncs (deoplete)
 augroup omnifuncs
