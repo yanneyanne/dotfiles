@@ -9,6 +9,23 @@ colorscheme OceanicNext
 " Have statusline always be visible
 set laststatus=2
 
+" Disable awkard sidebar default error indicators
+let g:ale_set_signs=0
+
+" All ALE indicators should be highlight-based
+let g:ale_set_highlights=1
+
+" Highlight error lines with an underline and change the color to red
+highlight ALEErrorLine guifg=#ec5f67
+
+" Highlight warning token with an underline and change the color to yellow
+highlight ALEWarningLine guifg=#fac863
+
+" Navigate to the previous ALE erorr with Ctrl-p
+map <silent> <C-p> <Plug>(ale_previous_wrap)
+"
+" Navigate to the next ALE erorr with Ctrl-n
+map <silent> <C-n> <Plug>(ale_next_wrap)
 
 " Make Lightline use Oceanic-Next
 let g:lightline = {
