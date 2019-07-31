@@ -105,6 +105,13 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # Set infinite shell history
-HISTFILE='$HOME/.zsh_history'
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
+
+# Share history between terminal sessions
+setopt inc_append_history
+setopt share_history
+
+# Ignore duplicate entries in history
+setopt hist_ignore_dups
