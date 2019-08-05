@@ -86,6 +86,29 @@ bindkey -M vivis '^M' accept-line-and-remove-mode-indicator
 # Do not wait for multi-char sequence commands
 export KEYTIMEOUT=1
 
+# Equate vi mode yank with system clipboard copy
+function vi-yank-pbcopy {
+  zle vi-yank
+}
+
+# Rebind vi mode yank to system clipboard copy
+zle -N vi-yank-pbcopy
+bindkey -M vicmd 'y' vi-yank-pbcopy
+
+# Equate vi mode paste with system clipboard paste
+function vi-paste-pbpaste {
+  to_paste=$(pbpaste)
+  # Insert system clipboard contents at cursor
+  LBUFFER="$LBUFFER${RBUFFER:0:1}"
+  RBUFFER="$to_paste${RBUFFER:1:${#RBUFFER}}"
+  # Move cursor to mimic vim paste behaviour
+  CURSOR="$(($CURSOR + ${#to_paste}))"
+}
+
+# Rebind vi mode paste to system clipboard paste
+zle -N vi-paste-pbpaste
+bindkey -M vicmd 'p' vi-paste-pbpaste
+
 ########################################
 # General zsh settings
 ########################################
