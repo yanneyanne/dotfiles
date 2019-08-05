@@ -1,5 +1,5 @@
 # Load zsh them
-source $HOME/dotfiles/themes/shell-theme.zsh
+source $HOME/dotfiles/zsh/shell-theme.zsh
 
 # Load sane VISUAL mode for zsh vi mode
 source $HOME/dotfiles/zsh/zsh-vimode-visual.zsh
@@ -36,52 +36,6 @@ bindkey '^?' backward-delete-char
 
 # Change default editor to nvim
 export EDITOR='nvim'
-
-# Catches window resizing event (TRAP WINdow CHange)
-# Ensures that the prompt is redrawn when the terminal size changes.
-function TRAPWINCH() {
-  zle && { zle -R; zle reset-prompt }
-}
-
-# Set initial vi mode indicator, if it wasn't already defined by a theme
-if RPS1=='' && RPROMPT==''; then
-  RPS1=''
-fi
-
-# Load colorsscheme module
-autoload -U colors && colors
-# Activate prompt escape sequence substitution
-setopt promptsubst
-# Displays a vi mode indicator when in NORMAL or VISUAL mode
-function zle-line-init zle-keymap-select {
-  case $KEYMAP in
-    viins|main) RPS1='' ;; # If KEYMAP set to INSERT mode, display nothing
-    vicmd) RPS1='%{$fg[blue]%}% [NORMAL]% %{$reset_color%}' ;;
-    vivis) RPS1=$'%{\e[38;5;16m%}% [VISUAL]% %{$reset_color%}'
-  esac
-  zle reset-prompt
-}
-
-# Create two new keymaps: zle-line-init, zle-keymap-select
-# Calling this widget makes sure that the prompt is redrawn
-# upon switching modes
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-# Augment original accept-line (triggered on Enter) with also
-# removing the vi mode NORMAL and VISUAL indicator
-function accept-line-and-remove-mode-indicator() {
-  RPS1=''
-  zle reset-prompt
-  zle accept-line
-}
-
-# Create a widget from `accept-line-and-remove-mode-indicator' with the same name
-zle -N accept-line-and-remove-mode-indicator
-
-# Rebind Enter in vim NORMAL and VISUAL modes
-bindkey -M vicmd '^M' accept-line-and-remove-mode-indicator
-bindkey -M vivis '^M' accept-line-and-remove-mode-indicator
 
 # Do not wait for multi-char sequence commands
 export KEYTIMEOUT=1
