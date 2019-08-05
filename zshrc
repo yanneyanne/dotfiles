@@ -138,3 +138,19 @@ setopt share_history
 
 # Ignore duplicate entries in history
 setopt hist_ignore_dups
+
+# Activate tab autocompletion
+autoload -U compinit && compinit
+
+# Color CLI output by filetype
+export LSCOLORS=exfxcxdxbxegedabagacad; # It is the default value on OSX, so this line can be omitted
+export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43;" # It is the default value on OSX, so this line can be omitted
+
+# Color tab autocomplete suggestions
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# Highlight currently selected tab autocomplete suggestion
+zstyle ':completion:*' menu select
+
+# Enable CLI output coloration
+export CLICOLOR=1;
