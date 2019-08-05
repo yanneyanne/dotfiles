@@ -54,12 +54,12 @@ autoload -U colors && colors
 setopt promptsubst
 # Displays a vi mode indicator when in NORMAL or VISUAL mode
 function zle-line-init zle-keymap-select {
-    case $KEYMAP in
-      viins|main) RPS1='' ;; # If KEYMAP set to INSERT mode, display nothing
-      vicmd) RPS1='%{$fg[blue]%}% [NORMAL]% %{$reset_color%}' ;;
-      vivis) RPS1=$'%{\e[38;5;16m%}% [VISUAL]% %{$reset_color%}'
-    esac
-    zle reset-prompt
+  case $KEYMAP in
+    viins|main) RPS1='' ;; # If KEYMAP set to INSERT mode, display nothing
+    vicmd) RPS1='%{$fg[blue]%}% [NORMAL]% %{$reset_color%}' ;;
+    vivis) RPS1=$'%{\e[38;5;16m%}% [VISUAL]% %{$reset_color%}'
+  esac
+  zle reset-prompt
 }
 
 # Create two new keymaps: zle-line-init, zle-keymap-select
