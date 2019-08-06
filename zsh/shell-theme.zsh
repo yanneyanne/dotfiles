@@ -4,7 +4,7 @@
 # Load sane VISUAL mode for zsh vi mode
 source $HOME/dotfiles/zsh/zsh-vimode-visual.zsh
 
-# Set options and settings.
+# Allow for functions in the prompt.
 setopt PROMPT_SUBST
 setopt PROMPT_SP
 
@@ -28,6 +28,7 @@ get-pwd() {
 }
 
 
+# Check whether the last command resulted in an error
 get-last-code() {
   [[ (-n "$last_code") && ($last_code -ne 0) ]] && echo -n "%{%F{$1}%K{$2}%} \u2715 "
 }
@@ -42,24 +43,46 @@ get-venv-info() {
 # Git prompt information
 ############################################
 
-get-git-info() { 
+get-git-prompt() {
   local git_branch=$(git symbolic-ref --short HEAD 2> /dev/null)
    
   if [[ -n "$git_branch" ]]; then
-    git diff --quiet --ignore-submodules --exit-code HEAD > /dev/null 2>&1
+    local git_status=$(git status --porcelain)
+    local num_staged=($(echo $git_status | grep -E "^A|^M|^D" | wc -l))
+    local num_modified=($(echo $git_status | grep -E "^ M|^ D" | wc -l))
+    local num_unmerged=($(echo $git_status | grep -E "^U" | wc -l))
+    local num_untracked=($(echo $git_status | grep "^??" | wc -l))
     
-    if [[ "$?" != "0" ]]; then
-      git_symbols="\u00b1 "
-      back_color=$3
-    else
-      back_color=$2
+    local git_symbols=""
+    if [[ $num_staged > 0 ]]; then
+      git_symbols="${git_symbols}${num_staged}\u208a"
     fi
-  
-    echo -n "%{%F{$1}%K{$back_color}%} $git_branch $git_symbols$rc "
+    if [[ $num_modified > 0 ]]; then
+      git_symbols="${git_symbols}${num_modified}\u208b"
+    fi
+    if [[ $num_unmerged > 0 ]]; then
+      git_symbols="${git_symbols}${num_unmerged}\u2093"
+    fi
+    if [[ $num_untracked > 0 ]]; then
+      git_symbols="${git_symbols}${num_untracked}\u2092"
+    fi
+
+    git_symbols="${git_symbols} "
+
+    # If git_symbol string is empty, the directory is clean
+    if [[ "$git_symbols" == " " ]]; then
+      back_color=$2
+      git_symbols=""
+    else
+      back_color=$3
+    fi
+
+    echo -n "%{%F{$1}%K{$back_color}%} $git_branch ${git_symbols}$rc "
   else
     echo " "
   fi
 }
+
 ############################################
 # Vi mode normal/visual mode indicators
 ############################################
@@ -118,7 +141,7 @@ powerless-prompt() {
   get-user-host $color_text $color_user_host
   get-last-code $color_text $color_code_wrong
   get-pwd $color_text $color_pwd
-  get-git-info $color_text $color_git_ok $color_git_dirty
+  get-git-prompt $color_text $color_git_ok $color_git_dirty
   get-venv-info $color_text $color_venv
 }
 
