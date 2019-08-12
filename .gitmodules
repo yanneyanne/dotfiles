@@ -1,0 +1,3 @@
+[submodule "assets/oceanic-next-iterm"]
+	path = assets/oceanic-next-iterm
+	url = https://github.com/mhartington/oceanic-next-iterm
