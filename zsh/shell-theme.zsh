@@ -48,7 +48,7 @@ get-git-prompt() {
    
   if [[ -n "$git_branch" ]]; then
     local git_status=$(git status --porcelain)
-    local num_staged=($(echo $git_status | grep -E "^A|^M|^D" | wc -l))
+    local num_staged=($(echo $git_status | grep -E "^A|^M|^D|^R" | wc -l))
     local num_modified=($(echo $git_status | grep -E "^ M|^ D" | wc -l))
     local num_unmerged=($(echo $git_status | grep -E "^U" | wc -l))
     local num_untracked=($(echo $git_status | grep "^??" | wc -l))

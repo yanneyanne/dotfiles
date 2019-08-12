@@ -1,4 +1,4 @@
-# Load zsh them
+# Load zsh theme
 source $HOME/dotfiles/zsh/shell-theme.zsh
 
 # Load sane VISUAL mode for zsh vi mode
