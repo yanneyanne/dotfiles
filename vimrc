@@ -1,7 +1,4 @@
-" Load vim plugins
-source $HOME/dotfiles/vim/configs/init.vimrc
-
-" Customize plugin-related behaviour
+" Load and customize plugin-related behaviour
 source $HOME/dotfiles/vim/configs/plugins.vimrc
 
 " Customize general vim behaviour
