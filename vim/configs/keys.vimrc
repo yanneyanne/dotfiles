@@ -22,9 +22,6 @@ vmap , ^
 vmap d- d$
 vmap d, d^
 
-" To remap closing and opening folds to space
-nnoremap <space> za
-
 " To make copy-pasting (and toggling the paste-mode) easier
 nnoremap <F2> :set invpaste paste?<CR>
 
@@ -38,3 +35,8 @@ vnoremap dd "_dd
 " Replace currently selected text with default register
 " without yanking it. In other words, 'paste-in-place'
 vnoremap p "_dP
+
+" Unset space to allow the leader key to be set to space
+nnoremap <SPACE> <Nop>
+" Set leader key
+let mapleader = " "

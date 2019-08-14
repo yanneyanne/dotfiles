@@ -9,6 +9,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'sheerun/vim-polyglot/'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 " Set color settings to accomodate Oceanic-Next
@@ -96,3 +99,36 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " and shift-tab to cycle in reversed order
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
+""""""""""""""""""""""""""""""""""""
+" Ag + Fzf
+""""""""""""""""""""""""""""""""""""
+" Use Ag as search backend if available
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Freeform text search
+nnoremap <Leader>c :Ag<CR>
+
+" Search file names
+nnoremap <Leader>f :Files<CR>
+
+" Search among open buffers
+nnoremap <Leader>r :Buffers<CR>
+
+" Customize fzf colors to match color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }

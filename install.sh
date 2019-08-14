@@ -9,14 +9,14 @@
 # Install dependencies
 ##########################
 
-if [ -z $(which zsh)]; then
+if [ -z $(which zsh) ]; then
 	echo "zsh not found. Installing zsh..."
 	brew install zsh
 	echo "Making zsh default shell"
 	chsh -s $(which zsh)
 fi
 
-if [ -z $(which nvim)]; then
+if [ -z $(which nvim) ]; then
 	echo "neovim not found. Installing neovim..."
 	brew install neovim
 	echo "Installing python3 and python-for-neovim"
@@ -27,9 +27,19 @@ if [ -z $(which nvim)]; then
 	vim +'PlugInstall --sync' +qa
 fi
 
-if [ -z $(which tmux)]; then
+if [ -z $(which tmux) ]; then
 	echo "tmux not found. Installing tmux..."
 	brew install tmux
+fi
+
+if [ -z $(which fzf) ]; then
+	echo "fzf not found. Installing fzf..."
+	brew install fzf
+fi
+
+if [ -z $(which ag) ]; then
+	echo "ag not found. Installing ag..."
+	brew install the_silver_searcher
 fi
 
 
