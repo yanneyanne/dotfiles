@@ -1,8 +1,14 @@
 # dotfiles
-My dotfiles for vim and zsh,  as well as some fonts and the solarized theme.
+My plug-and-play dotfiles.
 
 ## Installation
 
-Prerequisites:
+Place dotfiles in the home directory and run the install script. Note that iTerm must be used in order for colors to be correctly displayed. The configurations are also primarily geared towards MacOS and will become nigh-unusable on a Linux system. This will be addressed.
 
-* zsh needs to be installed
+## Manual Install Steps
+
+-
+
+## Behavior
+
+-
