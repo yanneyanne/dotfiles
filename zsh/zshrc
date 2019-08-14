@@ -4,6 +4,9 @@ source $HOME/dotfiles/zsh/shell-theme.zsh
 # Load sane VISUAL mode for zsh vi mode
 source $HOME/dotfiles/zsh/zsh-vimode-visual.zsh
 
+# Define the plugins
+plugins=(fzf)
+
 # Base16 Shell
 BASE16_SHELL="$HOME/dotfiles/zsh/oceanic-next.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
@@ -62,6 +65,15 @@ function vi-paste-pbpaste {
 # Rebind vi mode paste to system clipboard paste
 zle -N vi-paste-pbpaste
 bindkey -M vicmd 'p' vi-paste-pbpaste
+
+########################################
+# fzf + ag configuration
+########################################
+
+# Key bindings
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 ########################################
 # General zsh settings
