@@ -79,6 +79,9 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # General zsh settings
 ########################################
 
+# Allow changing directories without using cd
+setopt auto_cd
+
 # Allow reversed autocompletion cycling with shift-tab
 bindkey '^[[Z' reverse-menu-complete
 
@@ -86,6 +89,7 @@ bindkey '^[[Z' reverse-menu-complete
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
  
+# If non-printable characters are present, print them as-is
 alias tree='tree -N'
 
 # Alias for nvim 
