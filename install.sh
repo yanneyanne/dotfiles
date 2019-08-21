@@ -104,3 +104,6 @@ for (( i = 0; i < ${#dotfile_paths[@]}; i++))
 do
 	install_config ${dotfile_paths[i]} ${install_paths[i]}
 done
+
+# Prevent local environment-specific settings to be tracked by git
+git update-index --skip-worktree zsh/env.zsh

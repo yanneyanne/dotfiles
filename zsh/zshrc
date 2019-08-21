@@ -3,6 +3,9 @@ source $HOME/dotfiles/zsh/shell-theme.zsh
 
 # Load sane VISUAL mode for zsh vi mode
 source $HOME/dotfiles/zsh/zsh-vimode-visual.zsh
+#
+# Load environment-specific zsh config file
+source $HOME/dotfiles/zsh/env.zsh
 
 # Define the plugins
 plugins=(fzf)
