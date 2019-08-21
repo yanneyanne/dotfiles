@@ -1,13 +1,18 @@
 #!/bin/bash
 ##########################
 # This install script:
-# * makes sure that zsh, tmux and neovim are installed correctly
+# * makes sure that alacritty, zsh, tmux and neovim are installed correctly
 # * creates symlinks from the home directory to the dotfiles in ~/dotfiles
 ##########################
 
 ##########################
 # Install dependencies
 ##########################
+
+if [ -f "Applications/Alacritty.app" ]; then
+	echo "alacritty not found. Installing alacritty..."
+	brew cask install alacritty
+fi
 
 if [ -z $(which zsh) ]; then
 	echo "zsh not found. Installing zsh..."
@@ -47,28 +52,50 @@ fi
 # Create symlinks for dotfiles
 ##########################
 
-dir=~/dotfiles
-olddir=~/dotfiles_backup		#old dotfiles backup 
-file_paths="vim zsh/zshrc tmux/tmux.conf tmux/tmux.reset.conf"
+dir=$(pwd)
+backup_dir=~/dotfiles_backup
+
+# Relative paths for the config files to be installed
+dotfile_paths=( \
+	alacritty/alacritty.yml \
+	zsh/zshrc \
+	vim \
+	tmux/tmux.conf \
+	tmux/tmux.reset.conf \
+)
+# The target locations at which configs are to be installed
+install_paths=( \
+	~/.config/alacritty/alacritty.yml \
+	~/.zshrc \
+	~/.config/nvim \
+	~/.tmux.conf \
+	~/.tmux.reset.conf \
+)
 
 # Create dotfiles_old in homedir
-if [ ! -d "$olddir" ]; then
-	echo -n "Creating $olddir for backup of any existing dotfiles in home directory... "
-	mkdir -p $olddir
+if [ ! -d "$backup_dir" ]; then
+	echo -n "Creating $backup_dir for backup of any existing dotfiles in home directory... "
+	mkdir -p $backup_dir
 	echo "Done"
 fi
 
-# Change to dotfiles directory
-echo -n "Changing to the $dir directory... "
-echo "Done"
-
-# Move any existing dotfiles to the backup directory, then creates symlinks to new files in home directory
-for path in $file_paths; do
-	file=$(basename $path)
-	if [ -e "$file" ]; then
-		echo "Moving existing dotfile $file from ~ to $olddir."
-		mv ~/.$file $olddir
+# Link dotfile to its target install path
+# Existing dotfiles are moved to the backup directory
+install_config () {
+	local dotfile_path=$1
+	local install_path=$2
+	dotfile=$(basename $dotfile_path)
+	install_dir=$(dirname $install_path)
+	if [ -e "$install_path" ]; then
+		echo "Moving existing dotfile $dotfile to $backup_dir."
+		mv $install_path $backup_dir
 	fi
-	echo "Creating symlink to $path in home directory."
-	ln -sfn "$dir/$path" ~/.$file
+	echo "Creating symlink to $dotfile at $install_path"
+	mkdir -p "$install_dir"
+	ln -sfn "$dir/$dotfile_path" "$install_path"
+}
+
+for (( i = 0; i < ${#dotfile_paths[@]}; i++))
+do
+	install_config ${dotfile_paths[i]} ${install_paths[i]}
 done

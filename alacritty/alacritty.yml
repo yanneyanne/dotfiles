@@ -1,0 +1,139 @@
+#################################
+# General look and feel
+#################################
+
+env:
+
+  TERM: xterm-256color
+
+
+mouse:
+
+  # Hide the mouse cursor
+  hide_when_typing: true
+
+
+window:
+
+  # full - alacritty has a title bar and borders
+  # none - alacritty is basically just a square
+  decorations: none
+
+#################################
+# Font configuration (changes require restart)
+#################################
+
+font:
+
+  # Normal (roman) font face
+  normal:
+    # Font family
+    family: Menlo
+    style: Regular
+
+  # Bold font face
+  bold:
+    family: Menlo
+
+  # Italic font face
+  italic:
+    family: Menlo
+
+  # Point size
+  size: 12
+
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+  offset:
+    x: 0
+    y: 3
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increasing `x` moves the glyph to the right,
+  # increasing `y` moves the glyph upwards.
+  glyph_offset:
+    x: 0
+    y: 3
+
+  # Thin stroke font rendering (macOS only)
+  #
+  # Thin strokes are suitable for retina displays, but for non-retina screens
+  # it is recommended to set `use_thin_strokes` to `false`
+  #
+  # macOS >= 10.14.x:
+  #
+  # If the font quality on non-retina display looks bad then set
+  # `use_thin_strokes` to `true` and enable font smoothing by running the
+  # following command:
+  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
+  #
+  # This is a global setting and will require a log out or restart to take
+  # effect.
+  use_thin_strokes: true
+
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+
+#################################
+# Oceanic Next colorscheme
+#################################
+
+colors:
+  # Default colors
+  primary:
+    background: '0x1b2b34'
+    foreground: '0xd8dee9'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x1b2b34'
+    cursor: '0xffffff'
+
+  # Normal colors
+  normal:
+    black:   '0x343d46'
+    red:     '0xEC5f67'
+    green:   '0x99C794'
+    yellow:  '0xFAC863'
+    blue:    '0x6699cc'
+    magenta: '0xc594c5'
+    cyan:    '0x5fb3b3'
+    white:   '0xd8dee9'
+
+  # Bright colors
+  bright:
+    black:   '0x343d46'
+    red:     '0xEC5f67'
+    green:   '0x99C794'
+    yellow:  '0xFAC863'
+    blue:    '0x6699cc'
+    magenta: '0xc594c5'
+    cyan:    '0x5fb3b3'
+    white:   '0xd8dee9'
+
+
+#################################
+# Key bindings and general keyboard behavior
+#################################
+
+key_bindings:
+  # Send hex codes that correspond to pane resizing in .tmux.conf
+  - { key: H,        mods: Command,       chars: "\x07\x48"             }
+  - { key: J,        mods: Command,       chars: "\x07\x4a"             }
+  - { key: K,        mods: Command,       chars: "\x07\x4b"             }
+  - { key: L,        mods: Command,       chars: "\x07\x4c"             }
+  # Enable copy, paste, quit, new window, fullscreen toggling and font size changes key bindings
+  - { key: V,        mods: Command,       action: Paste                        }
+  - { key: C,        mods: Command,       action: Copy                         }
+  - { key: Q,        mods: Command,       action: Quit                         }
+  - { key: N,        mods: Command,       action: SpawnNewInstance             }
+  - { key: Return,   mods: Command,       action: ToggleFullscreen             }
+  - { key: Equals,   mods: Command,       action: IncreaseFontSize             }
+  - { key: Minus,    mods: Command,       action: DecreaseFontSize             }
+  - { key: Minus,    mods: Command|Shift, action: ResetFontSize                }
+
+
+# Make alt work as normal on the Mac
+alt_send_esc: false
