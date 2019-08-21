@@ -9,6 +9,11 @@
 # Install dependencies
 ##########################
 
+if [ -z $(which brew) ]; then
+	echo "brew not found. Installing brew..."
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 if [ -f "Applications/Alacritty.app" ]; then
 	echo "alacritty not found. Installing alacritty..."
 	brew cask install alacritty
