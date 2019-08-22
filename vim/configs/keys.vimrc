@@ -12,25 +12,16 @@ nmap <C-l> gt
 imap <C-l> <Esc>gt
 
 " Commands for moving and deleting to end/beginning of line optimized for swe-keyboard
-nmap - $
-nmap , ^
-nmap d- d$
-nmap d, d^
-" The same end/beginning of line changes as above, but in visual mode
-vmap - $
-vmap , ^
-vmap d- d$
-vmap d, d^
+noremap - $
+noremap , ^
+
+" Map x to a delete without yanking
+nmap x "_d
+vmap x "_d
+nmap xx "_dd
 
 " To make copy-pasting (and toggling the paste-mode) easier
 nnoremap <F2> :set invpaste paste?<CR>
-
-" Delete with 'd' and 'dd' without yanking
-" Note that copy registers can still manually be specified
-nnoremap d "_d
-nnoremap dd "_dd
-vnoremap d "_d
-vnoremap dd "_dd
 
 " Replace currently selected text with default register
 " without yanking it. In other words, 'paste-in-place'
