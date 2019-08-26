@@ -14,7 +14,7 @@ color_code_wrong="red"
 color_pwd="blue"
 color_git_ok="green"
 color_git_dirty="yellow"
-color_venv="blue"
+color_venv="white"
 
 # Define a reset color string
 rc='%{%f%k%}'
@@ -34,9 +34,9 @@ get-last-code() {
 }
 
 get-venv-info() {
-    if [ -n "$VIRTUAL_ENV" ]; then
-        echo -n "%{%F{$1}%K{$2}%} $(basename $VIRTUAL_ENV) $rc"
-    fi
+  if [ -n "$VIRTUAL_ENV" ]; then
+    echo -n "%F{$1}%K{$2}%} $(basename $VIRTUAL_ENV) $rc "
+  fi
 }
 
 ############################################
@@ -79,7 +79,7 @@ get-git-prompt() {
 
     echo -n "%{%F{$1}%K{$back_color}%} $git_branch ${git_symbols}$rc "
   else
-    echo " "
+    echo -n ""
   fi
 }
 
