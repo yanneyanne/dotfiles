@@ -35,7 +35,7 @@ get-last-code() {
 
 get-venv-info() {
   if [ -n "$VIRTUAL_ENV" ]; then
-    echo -n "%F{$1}%K{$2}%} $(basename $VIRTUAL_ENV) $rc "
+    echo -n "%F{$1}%K{$2}%} $(basename $VIRTUAL_ENV) $rc"
   fi
 }
 
@@ -77,7 +77,7 @@ get-git-prompt() {
       back_color=$3
     fi
 
-    echo -n "%{%F{$1}%K{$back_color}%} $git_branch ${git_symbols}$rc "
+    echo -n "%{%F{$1}%K{$back_color}%} $git_branch ${git_symbols}$rc"
   else
     echo -n ""
   fi
@@ -153,5 +153,5 @@ precmd-powerless() {
 [[ ${precmd_functions[(r)precmd-powerless]} != "precmd-powerless" ]] && precmd_functions+=(precmd-powerless)
 
 # Set the prompts.
-PROMPT='$(powerless-prompt)'
+PROMPT='$(powerless-prompt) '
 
