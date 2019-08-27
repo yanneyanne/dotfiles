@@ -33,6 +33,9 @@ get-last-code() {
   [[ (-n "$last_code") && ($last_code -ne 0) ]] && echo -n "%{%F{$1}%K{$2}%} \u2715 "
 }
 
+# Remove virtual env's default capability of changing the prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 get-venv-info() {
   if [ -n "$VIRTUAL_ENV" ]; then
     echo -n "%F{$1}%K{$2}%} $(basename $VIRTUAL_ENV) $rc"
