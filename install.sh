@@ -33,6 +33,7 @@ if [ -z $(which nvim) ]; then
 	brew install python3
 	pip2 install neovim --upgrade
 	pip3 install neovim --upgrade
+	pip3 install black --upgrade # Python fixer
 	echo "Installing neovim plugins"
 	vim +'PlugInstall --sync' +qa
 fi

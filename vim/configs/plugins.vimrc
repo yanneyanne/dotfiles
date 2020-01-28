@@ -12,6 +12,7 @@ Plug 'sheerun/vim-polyglot/'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'psf/black'
 call plug#end()
 
 " Set color settings to accomodate Oceanic-Next
@@ -76,6 +77,25 @@ let g:lightline#ale#indicator_checking = " \u25F7 "
 let g:lightline#ale#indicator_warnings = "\u26A0 "
 let g:lightline#ale#indicator_errors = "\u2715 "
 let g:lightline#ale#indicator_ok = " \u2714 "
+
+" Set maximum line length to 100 for black python fixer
+let g:black_linelength=100
+
+" Specify maximum line length for flake8
+" Also, ignore 'empty space before colon' and 'empty space before boolean
+" operator' errors.
+let g:ale_python_flake8_options='--max-line-length 100 --ignore=E203,W503'
+
+" Configure which linters for ALE to use
+let g:ale_linters = {
+      \'python': [
+      \     'flake8',
+      \],
+      \}
+
+" Since we could be using multiple linters in the future, we should should
+" specify which linter is complaining
+let g:ale_echo_msg_format = '%linter%: (%code%) %s'
 
 " omnifuncs (deoplete)
 augroup omnifuncs
