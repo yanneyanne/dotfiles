@@ -137,6 +137,9 @@ nnoremap <Leader>f :Files<CR>
 " Search among open buffers
 nnoremap <Leader>r :Buffers<CR>
 
+" Place the fuzzyfinder window at the bottom of the vim screen
+let g:fzf_layout = { 'down':  '40%'}
+
 " Customize fzf colors to match color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
