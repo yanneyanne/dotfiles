@@ -11,10 +11,6 @@ imap <C-h> <Esc>gT
 nmap <C-l> gt
 imap <C-l> <Esc>gt
 
-" Set moving to next (n) previous (N) character when searching with f or t
-noremap n ;
-noremap N ,
-
 " Commands for moving and deleting to end/beginning of line optimized for swe-keyboard
 noremap - $
 noremap , ^
