@@ -152,6 +152,9 @@ lua <<EOF
     --  root_dir = util.root_pattern('.git')(fname)
     -- }
   end
+  -- Use å/Å to jump to the next or previous diagnostic errors
+  vim.keymap.set('n', 'Å', vim.diagnostic.goto_prev)
+  vim.keymap.set('n', 'å', vim.diagnostic.goto_next)
 EOF
 
 " Set color settings to accomodate Oceanic-Next
