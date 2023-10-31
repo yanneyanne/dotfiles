@@ -12,7 +12,7 @@ color_text="black"
 color_user_host="green"
 color_code_wrong="red"
 color_pwd="blue"
-color_git_ok="green"
+color_git_ok="#93b259"
 color_git_dirty="yellow"
 color_venv="white"
 

@@ -93,14 +93,14 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x343d46'
+    black:   '0x5c6a72'
     red:     '0xf85552'
     green:   '0x8da101'
     yellow:  '0xFAC863'
     blue:    '0x3a94c5'
     magenta: '0xdf69ba'
     cyan:    '0x35a77c'
-    white:   '0xd8dee9'
+    white:   '0xe0dcc7'
 
   # Bright colors
   bright:
