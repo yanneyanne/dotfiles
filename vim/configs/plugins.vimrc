@@ -237,6 +237,10 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" Make sure fuzzyfinding ignores the files in the gitignore
+" but doesn't ignore the gitignore itself.
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore ".git" -g ""'
+
 " Freeform text search
 nnoremap <Leader>c :Ag<CR>
 
