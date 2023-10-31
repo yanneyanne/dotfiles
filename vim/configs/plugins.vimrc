@@ -17,9 +17,7 @@ Plug 'neanias/everforest-nvim', { 'branch': 'main' }
 Plug 'tpope/vim-sleuth'
 Plug 'Raimondi/delimitMate'
 Plug 'mfussenegger/nvim-lint'
-Plug 'itchyny/lightline.vim'
-Plug 'spywhere/lightline-lsp'
-Plug 'maximbaz/lightline-ale'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'sheerun/vim-polyglot/'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -193,48 +191,34 @@ require('lint').linters_by_ft = {
 }
 EOF
 
-" Highlight error lines with an underline and change the color to red
-highlight ALEErrorLine guifg=#ec5f67
 
-" Highlight warning token with an underline and change the color to yellow
-highlight ALEWarningLine guifg=#fac863
-"
-" Make Lightline use Oceanic-Next
-let g:lightline = {
-    \ 'colorscheme': 'oceanicnext',
-\}
-
-" Register linting related components
-let g:lightline.component_expand = {
-      \  'linter_hints': 'lightline#lsp#hints',
-      \  'linter_infos': 'lightline#lsp#infos',
-      \  'linter_warnings': 'lightline#lsp#warnings',
-      \  'linter_errors': 'lightline#lsp#errors',
-      \  'linter_ok': 'lightline#lsp#ok',
-      \ }
-
-" Colorize linter for Lightline components
-let g:lightline.component_type = {
-      \     'linter_hints': 'left',
-      \     'linter_infos': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
-
-" Add components to Lightline
-let g:lightline.active = {
-    \ 'left': [['readonly', 'filename', 'modified']],
-    \ 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'lineinfo', 'percent']]
-    \ }
-
-" Set lightline linting components to use icons
-" The spaces ensure that icons line up
-let g:lightline#lsp#indicator_checking = " \u25F7 "
-let g:lightline#lsp#indicator_warnings = "\u26A0 "
-let g:lightline#lsp#indicator_errors = "\u2715 "
-let g:lightline#lsp#indicator_ok = " \u2714 "
-
+lua <<EOF
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'everforest'
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {
+      {'diagnostics',
+        symbols = {error = '✕', warn = '⚠ ', info = 'I', hint = 'H'},
+        colored = true,           -- Displays diagnostics status in color if set to true.
+        update_in_insert = false, -- Update diagnostics in insert mode.
+        always_visible = false   -- Show diagnostics even if there are none.
+      }
+    },
+    lualine_c = {
+      {'filename',
+        symbols = {modified = '•'}
+      }
+    },
+    lualine_x = {'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+}
+EOF
 
 " Set maximum line length to 120 for black python fixer
 let g:black_linelength=120
