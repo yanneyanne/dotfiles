@@ -9,11 +9,11 @@ setopt PROMPT_SUBST
 setopt PROMPT_SP
 
 color_text="black"
-color_user_host="green"
-color_code_wrong="red"
-color_pwd="blue"
+color_user_host="#93b259"
+color_code_wrong="#fc8d8b"
+color_pwd="#7dccf7"
 color_git_ok="#93b259"
-color_git_dirty="yellow"
+color_git_dirty="#fcd166"
 color_venv="white"
 
 # Define a reset color string
