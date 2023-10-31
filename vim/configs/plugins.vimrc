@@ -13,7 +13,7 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 
-Plug 'mhartington/oceanic-next'
+Plug 'neanias/everforest-nvim', { 'branch': 'main' }
 Plug 'tpope/vim-sleuth'
 Plug 'Raimondi/delimitMate'
 Plug 'mfussenegger/nvim-lint'
@@ -161,9 +161,19 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-set background=dark
+set background=light
+
+lua <<EOF
+require('everforest').setup({
+  ---Controls the "hardness" of the background. Options are "soft", "medium" or "hard".
+  background = "medium"
+})
+EOF
+
+" For better performance
+let g:everforest_better_performance = 1
 syntax enable
-colorscheme OceanicNext
+colorscheme everforest
 
 " Have statusline always be visible
 set laststatus=2
