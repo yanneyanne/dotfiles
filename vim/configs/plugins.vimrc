@@ -204,7 +204,8 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {
-      {'diagnostics',
+      {
+        'diagnostics',
         symbols = {error = '✕', warn = '⚠ ', info = 'I', hint = 'H'},
         colored = true,           -- Displays diagnostics status in color if set to true.
         update_in_insert = false, -- Update diagnostics in insert mode.
@@ -212,7 +213,8 @@ require('lualine').setup {
       }
     },
     lualine_c = {
-      {'filename',
+      {
+        'filename',
         symbols = {modified = '•'}
       }
     },
