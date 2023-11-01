@@ -69,7 +69,8 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  use_thin_strokes: true
+  # This uses the default MacOS smoothing value of 2
+  AppleFontSmoothing: 2;
 
 
 # If `true`, bold text is drawn using the bright color variants.
@@ -133,7 +134,3 @@ key_bindings:
   - { key: Equals,   mods: Command,       action: IncreaseFontSize             }
   - { key: Minus,    mods: Command,       action: DecreaseFontSize             }
   - { key: Minus,    mods: Command|Shift, action: ResetFontSize                }
-
-
-# Make alt work as normal on the Mac
-alt_send_esc: false
