@@ -8,10 +8,11 @@ source $HOME/dotfiles/zsh/zsh-vimode-visual.zsh
 setopt PROMPT_SUBST
 setopt PROMPT_SP
 
+# Color codes taken willy-nilly from the everforest theme
 color_text="black"
 color_user_host="#93b259"
 color_code_wrong="#fc8d8b"
-color_pwd="#7dccf7"
+color_pwd="#edeada"
 color_git_ok="#93b259"
 color_git_dirty="#fcd166"
 color_venv="white"
