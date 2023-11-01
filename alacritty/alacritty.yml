@@ -84,7 +84,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '0xfffbef'
+    # For everforest medium use 0xfffbef. For everforest hard use 0xfffbef.
+    background: '0xfdf6e3'
     foreground: '0x5c6a72'
 
   # Colors the cursor will use if `custom_cursor_colors` is true

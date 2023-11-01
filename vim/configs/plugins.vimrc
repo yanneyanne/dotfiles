@@ -167,7 +167,7 @@ set background=light
 lua <<EOF
 require('everforest').setup({
   ---Controls the "hardness" of the background. Options are "soft", "medium" or "hard".
-  background = "hard"
+  background = "medium"
 })
 EOF
 
