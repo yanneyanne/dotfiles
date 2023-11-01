@@ -11,12 +11,14 @@
 
 if [ -z $(which brew) ]; then
 	echo "brew not found. Installing brew..."
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/kqvl629/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if [ -f "Applications/Alacritty.app" ]; then
+if [ ! -f "Applications/Alacritty.app" ]; then
 	echo "alacritty not found. Installing alacritty..."
-	brew cask install alacritty
+	brew install --cask alacritty
 fi
 
 if [ -z $(which zsh) ]; then
